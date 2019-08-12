@@ -1,0 +1,119 @@
+Running job in /global/u1/s/sdhammo/umt/umt2015/run-umt .. 
+Running deck: grid6912MPI_3x6x8.cmg Order=16 Groups=200 quadType=2 Polar=9 Azim= Thr=4
+ Executing UMT2013 Number of ranks =6912
+ and number of OMP threads  =4
+ gridFileName: grid6912MPI_3x6x8.cmg
+ setting the number of groups=200
+ Running with Product Quadrature 
+ setting number of polar angles     = 9
+ setting number of azimuthal angles = 10
+ Building mesh...
+ Mesh complete.
+ Initializing Teton object...
+    done.
+ Starting time advance...
+CYCLE 1 timerad = 3e-06
+ 
+TempIters = 3 FluxIters = 3 GTAIters = 0
+TrMax =     0.0031622776601684 in Zone 229 on Node 6596
+TeMax =     0.0031622776601684 in Zone 234 on Node 6911
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 16.431314             3.2574758529663
+ 
+CYCLE 2 timerad = 6.3e-05
+ 
+TempIters = 8 FluxIters = 8 GTAIters = 0
+TrMax =     0.3645921996023 in Zone 195 on Node 6624
+TeMax =     0.0075234782248037 in Zone 195 on Node 6624
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 46.293839             16.731115818024
+ 
+CYCLE 3 timerad = 0.000123
+ 
+TempIters = 7 FluxIters = 7 GTAIters = 0
+TrMax =     0.43263702925497 in Zone 162 on Node 6361
+TeMax =     0.14207129572443 in Zone 195 on Node 6624
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 41.347042             29.902468204498
+ 
+CYCLE 4 timerad = 0.000183
+ 
+TempIters = 7 FluxIters = 7 GTAIters = 0
+TrMax =     0.47777565075018 in Zone 157 on Node 6361
+TeMax =     0.18768964072547 in Zone 157 on Node 6361
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 40.492689             42.538924217224
+ 
+CYCLE 5 timerad = 0.000243
+ 
+TempIters = 7 FluxIters = 7 GTAIters = 0
+TrMax =     0.5123367259172 in Zone 157 on Node 6361
+TeMax =     0.22394100214268 in Zone 157 on Node 6361
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 40.773414             55.181843280792
+ 
+CYCLE 6 timerad = 0.000303
+ 
+TempIters = 7 FluxIters = 7 GTAIters = 0
+TrMax =     0.54062904525352 in Zone 150 on Node 6300
+TeMax =     0.25504594740964 in Zone 157 on Node 6361
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 39.537072             67.29830121994
+ 
+ SuOlson setting last step's dt=3.1e-05
+CYCLE 7 timerad = 0.000334
+ 
+TempIters = 6 FluxIters = 6 GTAIters = 0
+TrMax =     0.55355935952186 in Zone 210 on Node 6072
+TeMax =     0.27044841607655 in Zone 150 on Node 6300
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 28.445095             74.878171682358
+ 
+ SuOlson Test version 1.0 completed at time= 0.000334  goalTime= 0.000334
+ Computing error check along x=0.00694444, y=0.0104167
+ z=    0.01 tInterpolated=  0.00533376 tExact=    0.00468 error=0.000653763
+ z=     0.1 tInterpolated=  0.00533376 tExact=    0.00468 error=0.000653763
+ z= 0.17783 tInterpolated=  0.00533376 tExact=    0.00468 error=0.000653761
+ z= 0.31623 tInterpolated=   0.0053326 tExact=    0.00468 error=  0.0006526
+ z=    0.45 tInterpolated=   0.0050132 tExact=    0.00455 error=0.000463199
+ z=     0.5 tInterpolated=  0.00267072 tExact=    0.00234 error=0.000330716
+ z= 0.56234 tInterpolated= 0.000202004 tExact=      5e-05 error=0.000152004
+ z=    0.75 tInterpolated= 5.59114e-08 tExact=          0 error=5.59114e-08
+numUnknowns = 1.86325e+12
+cumulativeIterationCount= 45 cumulativeWorkTime=253.32 s.
+figure of merit = 3.3099e+11

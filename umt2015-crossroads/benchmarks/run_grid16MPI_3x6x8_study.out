@@ -1,0 +1,468 @@
+---> Running with OMP_NUM_THREADS=1
+ Executing UMT2013 Number of ranks =16
+ and number of OMP threads  =1
+ gridFileName: grid16MPI_3x6x8.cmg
+ setting the number of groups=200
+ Running with Product Quadrature 
+ setting number of polar angles     = 9
+ setting number of azimuthal angles = 10
+ Building mesh...
+ Mesh complete.
+ Initializing Teton object...
+    done.
+ Starting time advance...
+CYCLE 1 timerad = 3e-06
+ 
+TempIters = 3 FluxIters = 3 GTAIters = 0
+TrMax =     0.0031622776601684 in Zone 1 on Node 15
+TeMax =     0.0031622776601684 in Zone 162 on Node 15
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 14.750725             9.31116938591
+ 
+CYCLE 2 timerad = 6.3e-05
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.36459219972404 in Zone 229 on Node 10
+TeMax =     0.0075234782306287 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 26.965926             29.50203371048
+ 
+CYCLE 3 timerad = 0.000123
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.43263702947616 in Zone 229 on Node 10
+TeMax =     0.14207129578825 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 26.993632             49.691022634506
+ 
+CYCLE 4 timerad = 0.000183
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.4777756510436 in Zone 229 on Node 10
+TeMax =     0.18768964083942 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 26.913585             69.890357255936
+ 
+CYCLE 5 timerad = 0.000243
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.51233672606858 in Zone 229 on Node 10
+TeMax =     0.22394100227411 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 26.934234             90.100999116898
+ 
+CYCLE 6 timerad = 0.000303
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.54062904423316 in Zone 229 on Node 10
+TeMax =     0.25504594739046 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 26.874129             110.27375197411
+ 
+ SuOlson setting last step's dt=3.1e-05
+CYCLE 7 timerad = 0.000334
+ 
+TempIters = 4 FluxIters = 4 GTAIters = 0
+TrMax =     0.55355935713108 in Zone 229 on Node 10
+TeMax =     0.2704484158668 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 22.724367             127.11416053772
+ 
+ SuOlson Test version 1.0 completed at time= 0.000334  goalTime= 0.000334
+ Computing error check along x=0.0416667, y=    0.125
+ z=     0.1 tInterpolated=  0.00533376 tExact=    0.00468 error=0.000653759
+ z= 0.17783 tInterpolated=  0.00533368 tExact=    0.00468 error=0.000653682
+ z= 0.31623 tInterpolated=  0.00532486 tExact=    0.00468 error=0.000644859
+ z=    0.45 tInterpolated=  0.00474231 tExact=    0.00455 error= 0.00019231
+ z=     0.5 tInterpolated=  0.00267023 tExact=    0.00234 error=0.000330228
+ z= 0.56234 tInterpolated= 0.000460006 tExact=      5e-05 error=0.000410006
+ z=    0.75 tInterpolated= 9.67465e-07 tExact=          0 error=9.67465e-07
+numUnknowns = 4.31309e+09
+cumulativeIterationCount= 32 cumulativeWorkTime=172.157 s.
+figure of merit = 8.01705e+08
+---> Running with OMP_NUM_THREADS=2
+ Executing UMT2013 Number of ranks =16
+ and number of OMP threads  =2
+ gridFileName: grid16MPI_3x6x8.cmg
+ setting the number of groups=200
+ Running with Product Quadrature 
+ setting number of polar angles     = 9
+ setting number of azimuthal angles = 10
+ Building mesh...
+ Mesh complete.
+ Initializing Teton object...
+    done.
+ Starting time advance...
+CYCLE 1 timerad = 3e-06
+ 
+TempIters = 3 FluxIters = 3 GTAIters = 0
+TrMax =     0.0031622776601684 in Zone 1 on Node 15
+TeMax =     0.0031622776601684 in Zone 162 on Node 15
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 10.47902             5.0388498306274
+ 
+CYCLE 2 timerad = 6.3e-05
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.36459219972404 in Zone 229 on Node 10
+TeMax =     0.0075234782306287 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 17.649263             15.933608531952
+ 
+CYCLE 3 timerad = 0.000123
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.43263702947616 in Zone 229 on Node 10
+TeMax =     0.14207129578825 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 17.701009             26.83721780777
+ 
+CYCLE 4 timerad = 0.000183
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.4777756510436 in Zone 229 on Node 10
+TeMax =     0.18768964083942 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 17.698484             37.714390516281
+ 
+CYCLE 5 timerad = 0.000243
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.51233672606858 in Zone 229 on Node 10
+TeMax =     0.22394100227411 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 17.663619             48.593826055527
+ 
+CYCLE 6 timerad = 0.000303
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.54062904423316 in Zone 229 on Node 10
+TeMax =     0.25504594739046 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 17.719468             59.498619794846
+ 
+ SuOlson setting last step's dt=3.1e-05
+CYCLE 7 timerad = 0.000334
+ 
+TempIters = 4 FluxIters = 4 GTAIters = 0
+TrMax =     0.55355935713108 in Zone 229 on Node 10
+TeMax =     0.2704484158668 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 14.948717             68.57564496994
+ 
+ SuOlson Test version 1.0 completed at time= 0.000334  goalTime= 0.000334
+ Computing error check along x=0.0416667, y=    0.125
+ z=     0.1 tInterpolated=  0.00533376 tExact=    0.00468 error=0.000653759
+ z= 0.17783 tInterpolated=  0.00533368 tExact=    0.00468 error=0.000653682
+ z= 0.31623 tInterpolated=  0.00532486 tExact=    0.00468 error=0.000644859
+ z=    0.45 tInterpolated=  0.00474231 tExact=    0.00455 error= 0.00019231
+ z=     0.5 tInterpolated=  0.00267023 tExact=    0.00234 error=0.000330228
+ z= 0.56234 tInterpolated= 0.000460006 tExact=      5e-05 error=0.000410006
+ z=    0.75 tInterpolated= 9.67465e-07 tExact=          0 error=9.67465e-07
+numUnknowns = 4.31309e+09
+cumulativeIterationCount= 32 cumulativeWorkTime=113.86 s.
+figure of merit = 1.21218e+09
+---> Running with OMP_NUM_THREADS=4
+ Executing UMT2013 Number of ranks =16
+ and number of OMP threads  =4
+ gridFileName: grid16MPI_3x6x8.cmg
+ setting the number of groups=200
+ Running with Product Quadrature 
+ setting number of polar angles     = 9
+ setting number of azimuthal angles = 10
+ Building mesh...
+ Mesh complete.
+ Initializing Teton object...
+    done.
+ Starting time advance...
+CYCLE 1 timerad = 3e-06
+ 
+TempIters = 3 FluxIters = 3 GTAIters = 0
+TrMax =     0.0031622776601684 in Zone 1 on Node 15
+TeMax =     0.0031622776601684 in Zone 162 on Node 15
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 8.197935             2.7219212055206
+ 
+CYCLE 2 timerad = 6.3e-05
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.36459219972404 in Zone 229 on Node 10
+TeMax =     0.0075234782306287 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 12.690001             8.5953052043915
+ 
+CYCLE 3 timerad = 0.000123
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.43263702947616 in Zone 229 on Node 10
+TeMax =     0.14207129578825 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 12.64499             14.454586744308
+ 
+CYCLE 4 timerad = 0.000183
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.4777756510436 in Zone 229 on Node 10
+TeMax =     0.18768964083942 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 12.662893             20.325054645538
+ 
+CYCLE 5 timerad = 0.000243
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.51233672606858 in Zone 229 on Node 10
+TeMax =     0.22394100227411 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 12.642536             26.193595170975
+ 
+CYCLE 6 timerad = 0.000303
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.54062904423316 in Zone 229 on Node 10
+TeMax =     0.25504594739046 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 12.629386             32.059190750122
+ 
+ SuOlson setting last step's dt=3.1e-05
+CYCLE 7 timerad = 0.000334
+ 
+TempIters = 4 FluxIters = 4 GTAIters = 0
+TrMax =     0.55355935713108 in Zone 229 on Node 10
+TeMax =     0.2704484158668 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 10.752412             36.951443195343
+ 
+ SuOlson Test version 1.0 completed at time= 0.000334  goalTime= 0.000334
+ Computing error check along x=0.0416667, y=    0.125
+ z=     0.1 tInterpolated=  0.00533376 tExact=    0.00468 error=0.000653759
+ z= 0.17783 tInterpolated=  0.00533368 tExact=    0.00468 error=0.000653682
+ z= 0.31623 tInterpolated=  0.00532486 tExact=    0.00468 error=0.000644859
+ z=    0.45 tInterpolated=  0.00474231 tExact=    0.00455 error= 0.00019231
+ z=     0.5 tInterpolated=  0.00267023 tExact=    0.00234 error=0.000330228
+ z= 0.56234 tInterpolated= 0.000460006 tExact=      5e-05 error=0.000410006
+ z=    0.75 tInterpolated= 9.67465e-07 tExact=          0 error=9.67465e-07
+numUnknowns = 4.31309e+09
+cumulativeIterationCount= 32 cumulativeWorkTime=82.2202 s.
+figure of merit = 1.67865e+09
+---> Running with OMP_NUM_THREADS=6
+ Executing UMT2013 Number of ranks =16
+ and number of OMP threads  =6
+ gridFileName: grid16MPI_3x6x8.cmg
+ setting the number of groups=200
+ Running with Product Quadrature 
+ setting number of polar angles     = 9
+ setting number of azimuthal angles = 10
+ Building mesh...
+ Mesh complete.
+ Initializing Teton object...
+    done.
+ Starting time advance...
+CYCLE 1 timerad = 3e-06
+ 
+TempIters = 3 FluxIters = 3 GTAIters = 0
+TrMax =     0.0031622776601684 in Zone 1 on Node 15
+TeMax =     0.0031622776601684 in Zone 162 on Node 15
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 7.418156             1.850061416626
+ 
+CYCLE 2 timerad = 6.3e-05
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.36459219972404 in Zone 229 on Node 10
+TeMax =     0.0075234782306287 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 10.82624             5.8212611675262
+ 
+CYCLE 3 timerad = 0.000123
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.43263702947616 in Zone 229 on Node 10
+TeMax =     0.14207129578825 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 10.869677             9.7995932102203
+ 
+CYCLE 4 timerad = 0.000183
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.4777756510436 in Zone 229 on Node 10
+TeMax =     0.18768964083942 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 10.881705             13.782041072845
+ 
+CYCLE 5 timerad = 0.000243
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.51233672606858 in Zone 229 on Node 10
+TeMax =     0.22394100227411 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 10.778342             17.763691186905
+ 
+CYCLE 6 timerad = 0.000303
+ 
+TempIters = 5 FluxIters = 5 GTAIters = 0
+TrMax =     0.54062904423316 in Zone 229 on Node 10
+TeMax =     0.25504594739046 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 10.870391             21.747347354889
+ 
+ SuOlson setting last step's dt=3.1e-05
+CYCLE 7 timerad = 0.000334
+ 
+TempIters = 4 FluxIters = 4 GTAIters = 0
+TrMax =     0.55355935713108 in Zone 229 on Node 10
+TeMax =     0.2704484158668 in Zone 229 on Node 10
+Recommended time step for next rad cycle = 6e-05
+ 
+ 
+********** Run Time Statistics **********
+                  Cycle Advance             Accumulated 
+                     Time (sec)         Angle Loop Time (sec)
+RADTR              = 9.25702             25.07182765007
+ 
+ SuOlson Test version 1.0 completed at time= 0.000334  goalTime= 0.000334
+ Computing error check along x=0.0416667, y=    0.125
+ z=     0.1 tInterpolated=  0.00533376 tExact=    0.00468 error=0.000653759
+ z= 0.17783 tInterpolated=  0.00533368 tExact=    0.00468 error=0.000653682
+ z= 0.31623 tInterpolated=  0.00532486 tExact=    0.00468 error=0.000644859
+ z=    0.45 tInterpolated=  0.00474231 tExact=    0.00455 error= 0.00019231
+ z=     0.5 tInterpolated=  0.00267023 tExact=    0.00234 error=0.000330228
+ z= 0.56234 tInterpolated= 0.000460006 tExact=      5e-05 error=0.000410006
+ z=    0.75 tInterpolated= 9.67465e-07 tExact=          0 error=9.67465e-07
+numUnknowns = 4.31309e+09
+cumulativeIterationCount= 32 cumulativeWorkTime=70.9015 s.
+figure of merit = 1.94663e+09

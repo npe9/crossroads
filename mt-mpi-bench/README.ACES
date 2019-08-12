@@ -1,0 +1,72 @@
+=========================================================
+ACES Multithreaded MPI Benchmark Suite
+=========================================================
+
+The ACES multi-threaded MPI benchmark suite tests the performance of nodes
+when running MPI communication functions within OpenMP threaded regions.
+
+The offeror should not modify the benchmark code for this benchmark.
+
+The OpenMP runtime used for this benchmark should be the same as that used
+for application benchmarking and not optimized specifically for this
+use case.
+
+A simple Makefile is provided which may be modified to support the local
+compilation/MPI runtime environment.
+
+=========================================================
+
+II. Running Benchmarks
+
+The benchmarks assume that ranks are allocated to nodes with nodes being
+completely filled (e.g. in 8 ranks over 2 nodes, ranks 0, 1, 2 and 3
+are on the first node, ranks 4, 5, 6 and 7 are on the second node etc). 
+Offerors should ensure that this rank mapping is used to provide genuine
+multi-node network performance. Remapping of ranks to ensure that all
+communications are internal to the node will generate an invalid
+benchmark result. ACES will run the benchmarks during acceptance with
+multi-node mapping to ensure accurate hardware performance is obtained.
+
+=========================================================
+
+III. Reporting Results
+
+Details of the desired results using the multi-threaded MPI benchmarks
+are provided in the ACES Technical Specification document. Note that
+the benchmark will generate more output data than is requested, the
+offeror needs only to report the benchmark values requested (but is free
+to provide additional data if desired).
+
+The offeror should provide a copy of the Makefile and configuration
+settings used for the benchmark results. 
+
+The benchmark should be compiled and run on the compiler and MPI environment
+which will be provided on the proposed machine.
+
+Reported results will be subject to acceptance testing using the ACES
+benchmark on final delivered hardware.
+
+=========================================================
+
+IV. Example Run:
+
+Two types of benchmarks are built. Benchmarks starting "st" are
+single threaded. Benchmarks starting with "mt" are multi-threaded
+are require MPI_THREAD_MULTIPLE.
+
+Example Single Threaded:
+
+OMP_NUM_THREADS=1 \
+OMP_PROC_BIND=close \
+OMP_PLACES=cores \
+srun -N 2 -n 2 -c 1 ./st-bench-one-sided-passive
+
+Example Multi Threaded:
+
+MPICH_MAX_THREAD_SAFETY=multiple \
+OMP_NUM_THREADS=16 \
+OMP_PROC_BIND=close \
+OMP_PLACES=cores \
+srun -N 2 -n 2 -c 16 ./mt-bench-one-sided-passive
+
+=========================================================

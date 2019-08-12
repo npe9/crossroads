@@ -1,0 +1,8 @@
+MPIHOME=$(dirname $(dirname $(which mpicxx)))
+INSTALL_DIR=$INSTALL_DIR
+BUILD_FLAG=$BUILD_FLAG
+BUILD_OPENMP=ON
+BUILD_PTHREADS=OFF
+if [ $BUILD_OPENMP == "ON" ]; then 
+  COMPILE_FLAGS="-fopenmp"
+fi

@@ -1,0 +1,64 @@
+% Copyright 2009 by Sandia National Laboratories
+% Theme written by Elijah Newren <enewren@sandia.gov>
+%
+% This code is derived from other themes licensed under GPLv2, thus:
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\mode<presentation>
+
+\useinnertheme[shadow=true]{rounded}
+\useoutertheme{sandia}
+\usecolortheme{orchid}
+\usecolortheme{whale}
+
+\setbeamerfont{block title}{size={}}
+% Reading colors:
+%    ``blue!60!black!80!white'' means:
+%        48% blue  (48% = 60%*80%)
+%        32% black (32% = 40%*80%; 40%=100%-60%)
+%        16% white (16% = 40%*20%; 20%=100%-80%)
+
+
+%% Match Dave's fuego presentation color, hsv=240,100,50
+%\setbeamercolor{titlelike}{parent=structure,bg=blue!50!black!100!white,fg=white%% Match standard whale/orchid/default coloring scheme; hsv=240,72,70
+%\setbeamercolor{titlelike}{parent=structure,bg=blue!62!black!80.1!white,fg=white}
+%% Close match to pixels in upper-left of stars & stripes; hsv=236(240),73,60
+\setbeamercolor{titlelike}{parent=structure,bg=blue!52.5!black!83.7!white,fg=white}
+
+%%% Another choice, somewhere inbetween all the above
+%\setbeamercolor{titlelike}{parent=structure,bg=blue!62!black!95!white,fg=white}
+
+\defbeamertemplate*{title page}{Sandia}[1][]
+{
+  \vbox{}
+  \vfill
+  \begin{centering}
+    {
+    \begin{beamercolorbox}[sep=3pt,center,rounded=true,shadow=true,#1]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    }
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \end{centering}
+  \vfill
+}
+
+\mode
+<all>

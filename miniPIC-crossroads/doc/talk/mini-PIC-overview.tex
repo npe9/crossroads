@@ -1,0 +1,401 @@
+%%
+\RequirePackage{flashmovie}
+\documentclass[t]{beamer}
+\usepackage[english]{babel}           % or whatever
+\usepackage[latin1]{inputenc}         % or whatever
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{multimedia}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{graphicx,natbib,amssymb,amsmath}
+\usepackage[absolute,overlay]{textpos}
+
+\input{macros}
+
+\mode<presentation>
+{
+  \usetheme{Sandia} % or ...
+  \setbeamercovered{transparent} % or whatever (possibly just delete it)
+  \usefonttheme[onlymath]{serif} % use normal math fonts
+}
+
+% This causes an updated outline to appear before each section
+\mode<beamer>
+{
+  \AtBeginSection[]{
+    \begin{frame}
+      \frametitle{Outline}
+       {\small\tableofcontents[currentsection,hideothersubsections]}
+    \end{frame}
+  }
+
+
+}
+\defbeamertemplate{itemize item}{myball}%
+{\raise-0.2cm\beamer@usesphere{item projected}{mysphere}}
+
+% PKN: the footline isn't very useful -- better to conserve pixels
+%\setbeamertemplate{footline}{}
+\setbeamertemplate{navigation symbols}{}
+
+\title{{mini-PIC}, AN UNSTRUCTURED FINITE ELEMENT PARTICLE-IN-CELL
+  CODE FOR THREADED APPLICATIONS}
+
+\author{Matthew T. Bettencourt}
+\institute{Sandia National Laboratories}
+
+\date{Today}
+
+\subject{Important Material}
+
+\begin{document}
+
+%\setbeamertemplate{itemize item}{\small\raise1.25pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Outline}
+  {\small\tableofcontents[hideallsubsections]}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{What are Particle-in-Cell {(PIC)} codes}
+
+\begin{frame}
+ \frametitle{What Problems Do They Solve}
+  \begin{itemize}
+  \item PIC is used for when you represent your physics in two parts
+  \begin{itemize}
+    \item Discrete physical representation of something - a particle
+    \item Background field
+  \end{itemize}
+  \item Examples are:
+  \begin{itemize}
+  \item Planets/stars are the ``particles' with a background field
+    being gravity
+  \item Center of a fluid vortex with the field being global flow field
+  \item {\bf{Plasma dynamics with charged particles (electrons/ions)
+    creating a global electric field}}
+  \end{itemize}
+  \item Solution technique
+  \begin{itemize}
+  \item Particles are represented as discrete Lagrangian entities
+    which can migrate freely through the simulation domain
+  \item Fields are represented on the mesh, typically these are
+    computed by solving a potential type equation
+  \begin{itemize}
+    \item {\bf{For plasma, Poisson's equation for electric potential
+      based on charge density} }
+  \end{itemize}
+
+  \item Particles and Fields are coupled 
+  \item PIC codes often involve stochastic processes
+  \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+ 
+ \frametitle{mini-PIC Update Scheme}
+  \begin{itemize}
+  \item We are solving the electrostatic Boltzmann equations 
+\bes
+\partder{f_i}{t} +\vec{v} \cdot \partder{f_i}{\vec{x}} + \frac{\vec{F}}{m}
+\cdot  \partder{f_i}{\vec{v}} = 0 ;
+\hspace{.2in}
+\nabla \cdot \vec E = \frac \rho \epsilon = \sum^N_{i=1} q \frac{f_i}{\epsilon}; 
+\hspace{.2in}
+F = q \vec E
+\ees
+
+  \item mini-PIC solves these equation on an unstructured
+  grid in the  following steps
+  \begin{enumerate}
+  \item Particles are weighting to the grid as charge density $\rho$
+  \item Poisson's equation is solved $\nabla ^2 \phi = \frac \rho \epsilon$
+  \item Electric field is calculated $\vec E = -\nabla \cdot \phi$
+  \item Field is weighted to the particle location
+  \item Particle is accelerated $\vec F = q \vec E = m \vec a $
+  \item Particle is moved to new location
+  \item {\emph{Particles interact with walls or other particles (DSMC) - new
+    particles are created}}
+  \item Repeat
+  \end{enumerate}
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+ 
+ \frametitle{What Makes PIC Different from FEM}
+ \begin{itemize}
+ \item PIC has two parts - Field solve just standard implicit FEM
+ \item Particle part very different
+ \begin{itemize}
+ \item Particles are not fixed to an element, migrate through the system
+ \begin{itemize}
+ \item Particles need element data for forcing, charge deposition and
+   element crossing
+ \item Work can become unbalanced, particle mesh needs to be continually rebalanced
+ \item Work (particles) are created dynamically, particle hits a wall, 3 more may come out 
+ \item Gas chemistry - and electron hits a N atom, creates an $N^+$ and an $e^-$ based on a stochastic process.  
+ \end{itemize}
+ \item Many processes require pseudo random numbers
+ \begin{itemize}
+ \item Random number generators must be repeatable regardless of thread count
+ \end{itemize}
+ \end{itemize}
+ \item Summarizing, dynamic memory requirements, localized work loads, stochastic processes
+ \end{itemize}
+
+\end{frame}
+
+\section{What is mini-PIC}
+
+\begin{frame}
+ 
+ \frametitle{mini-PIC Overview}
+ \begin{itemize}
+ \item Solves the discrete Boltzmann equation in and
+   electrostatic field in an arbitrary domain (pamgen mesh) with reflective walls
+ \item Uses an unstructured hex mesh
+\begin{itemize}
+ \item Requires an iterative particle push based on skew of the element
+ \end{itemize}
+
+ \item Written with MPI parallelization at a high level, Kokkos at a node level
+ \item Uses a static partition for a particle mesh
+ \begin{itemize}
+ \item Particles are tracked to every cell crossing, packed and passed off to adjacent processors when needed
+ \end{itemize}
+ \item Uses Tpetra for matrix/vector/map storage
+ \item Has an unpreconditioned CG solver hand coded
+ \item Kokkos only has been tested on GPU, CPU and MIC
+ \item MPI+Kokkos only available on CPU/MIC - Tpetra doesn't work on GPU
+ \end{itemize}
+\end{frame}
+
+\begin{frame}
+ 
+ \frametitle{Particle Data Storage}
+ \begin{itemize}
+ \item Core data type is a Kokkos::Segmented\_Vector
+ \begin{itemize}
+ \item An array of chunks of data
+ \item Allows for lock free dynamic addition and subtraction of chunks
+ \item Requires a thread team to all add a chunk at the same time
+  \item Only on the device, no deep\_copy or other way to bring data
+    to the host - being resolved
+ \end{itemize}
+ \item ParticleList holds all the particle data
+ \begin{itemize}
+ \item Structure of arrays, position, velocity, force, ... (21 variables total)
+ \item Has a team push\_back function, delete\_particles, and migrate\_particle functions
+ \end{itemize}
+ \end{itemize}
+\end{frame}
+\begin{frame}
+ 
+ \frametitle{Particle migration and deletion}
+
+ \begin{itemize}
+   \item When a particle reaches the end of a parallel domain it's
+     marked for deletion and the index of this particle is added to a
+     migrate and deletion list
+     \begin{itemize}
+     \item A full thread team needs to all call this function as one
+       might need to grow these lists
+     \end{itemize}
+   \item Once all the particles on a processor have moved their
+     particles as far as they can
+     \begin{itemize}
+     \item All the particles from the migration list are packed into
+       buffers and sent to their neighboring processors
+     \item These particles are then deleted from the main list and the
+       list is back-filled
+     \item The new particles are unpacked and their temporal
+       advancement is continued  
+     \end{itemize}
+     \item This is repeated until all the particles have been pushed
+       to their final location
+ \end{itemize}
+
+
+\end{frame}
+
+
+\section{Performance}
+
+
+\begin{frame}
+ 
+ \frametitle{Performance Tuning}
+
+ \begin{itemize}
+   \item {Mini-PIC has been ported to three platforms}
+   \begin{itemize}
+     \item {Pthreads on Intel Xeon, OpenMP on Intel Xeon Phi, and Cuda
+     on Nvidia GPU}
+   \end{itemize}
+   \item {Kokkos made the porting simple, yet machine specific
+       tuning was required}
+  \begin{itemize}
+     \item {Because particle creation and deletion requires a thread team to
+       enter a particle update loop, this could lead to imbalance }
+     \item {A custom dynamic scheduler was developed using atomics}
+   \begin{itemize}
+     \item {This scheduler was not used on Cuda platform because Cuda
+       has efficient dynamic scheduling}
+     \item {Kokkos is looking at having a dynamic scheduling policy}
+   \end{itemize}
+   \item {Charge weighting requires atomic operations}
+   \begin{itemize}
+     \item {Particles are typically clustered in memory by element,
+       leads to atomic conflicts}
+     \item {Randomization of particles helped reduce this }
+     \item {Proper solution, sort particles by element, have a team
+       handle an elements particles to local memory, then use atomics
+       to push that to the mesh}
+       \item {Can't use Kokkos::Sort with a segmented\_view}
+   \end{itemize}
+
+ 
+   \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+ 
+ \frametitle{Performance Results}
+
+ \begin{itemize}
+   \item {mini-PIC tested on 2x6 Intel Xeon X5650, Xeon Phi KNC and Nvidia k20x}
+     \item {Work breakdown roughly the same on }
+ \begin{itemize}
+   \item {60\% Particle Move}
+   \item {\bf{30\% Particle Charge Weighting}}
+   \item {10\% Electric Field Weighting}
+   \item {$\approx$1\% Field Solve}
+ \end{itemize}
+ \item {Performance on the different machines is (higher is better) }
+   \begin{itemize}
+   \item {Intel Xeon {\bf{4.1M}} updates/second}
+   \item {Intel Xeon Phi {\bf{4.8M}} updates/second}
+   \item {Nvidia k20x {\bf{5.2M}} updates/second}
+ \end{itemize}
+ \item {Poor relative Cuda performance is due to atomic contention in charge
+   weighting and imbalance in particle move due to high thread team
+   count}
+   \begin{itemize}
+     \item Moving to tets from hexes would improve Cuda performance
+       while hurting others
+     \item Using a structured mesh would improve particle move performance by factor
+       of 10
+ \end{itemize}
+
+
+ \end{itemize}
+
+
+\end{frame}
+
+\if 0
+
+\section{Rolls for Task-Based Parallelism}
+\begin{frame}
+ \frametitle{Some Ideas for Task-Based Parallelism}
+
+ \begin{itemize}
+   \item The dynamic nature of PIC work leads to imbalance
+   \item One can restructure the move to be better balanced
+ \begin{itemize}
+   \item Particles are tied to an element at the start of a time-step -
+     Each element may have O(100) particles
+   \item Restructure data structures so an element owns it's own
+     particles
+   \item Every element update is a task
+   \item Particle migration to neighboring elements handled like off
+     processor communication
+   \item \bf{Advantage is that you would have better load-balancing,
+       better data locality, more reuse}
+   \item \bf{Disadvantage is that you would have to go through more
+       iteration of an update as a particle can cross 10+ elements,
+       more memory bloat, lots more complexity}
+
+ \end{itemize}
+ \end{itemize}
+
+
+\end{frame}
+\begin{frame}
+ \frametitle{Some Ideas for Task-Based Parallelism}
+ \begin{itemize}
+ \item Thinking smaller
+   \begin{itemize}
+     \item Chunk up the particles into small tasks not tied to
+       elements 
+     \item Interleave move and migrate tasks
+     \item When a migrate buffer is full, add a task to migrate that
+       data to where it can be processed
+       \item \bf{Simpler to implement and overlapped communication and
+           computation}
+       \item \bf{Still need to do larger rebalance step, worse data
+           reuse, ...}
+
+   \end{itemize}
+     
+   \item Thinking more global
+   \begin{itemize}
+      \item Different parts of the calculation are tasks
+        \item Compute force, accelerate particle, move particle,
+          weight particle to a grid.  These can be done completely for
+          a group of particles as several distinct tasks
+        \item This can be quite complicated to track where different
+          particles are in updates as they are migrated across
+          processors
+
+
+ \end{itemize}
+ \item \bf{All of these algorithms require migration of mesh data
+     structures along with the particles so we can perform movements}
+ \item \bf{An ideal decomposition for motion may not be any good for
+     weighting to mesh elements for FEM solve}
+ \end{itemize}
+
+
+\end{frame}
+
+\fi
+
+\section{Summary}
+\begin{frame}
+\frametitle{Summary}
+\begin{itemize}
+\item mini-PIC is a small (~2500 lines) hybrid MPI/Kokkos application 
+\item Performance near identical on different platforms tested, about
+  5M updates/second
+\item It has a dynamic work load making static partitioning and
+  scheduling inefficient
+\item Available today in a basic form
+\begin{itemize}
+\item Released under BSD license
+\item Developing large scale test problem with analytic solution for
+  pushing to http://mantevo.org
+\end{itemize}
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

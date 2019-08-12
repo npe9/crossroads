@@ -1,0 +1,27 @@
+#!/bin/tcsh
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=32
+#SBATCH -p standard
+#SBATCH -t 01:00:00
+#SBATCH -o stdout0001
+#SBATCH -e outtty0001
+#SBATCH -J runh0001
+#SBATCH --mail-type=ALL
+
+srun -n 32 -c 2 --cpu_bind=cores ./hsnap inh0001t1 outh0001t1-1
+srun -n 32 -c 2 --cpu_bind=cores ./hsnap inh0001t1 outh0001t1-2
+srun -n 32 -c 2 --cpu_bind=cores ./hsnap inh0001t1 outh0001t1-3
+srun -n 32 -c 2 --cpu_bind=cores ./hsnap inh0001t1 outh0001t1-4
+srun -n 32 -c 2 --cpu_bind=cores ./hsnap inh0001t1 outh0001t1-5
+
+srun -n 16 -c 4 --cpu_bind=cores ./hsnap inh0001t2 outh0001t2-1
+srun -n 16 -c 4 --cpu_bind=cores ./hsnap inh0001t2 outh0001t2-2
+srun -n 16 -c 4 --cpu_bind=cores ./hsnap inh0001t2 outh0001t2-3
+srun -n 16 -c 4 --cpu_bind=cores ./hsnap inh0001t2 outh0001t2-4
+srun -n 16 -c 4 --cpu_bind=cores ./hsnap inh0001t2 outh0001t2-5
+
+srun -n  8 -c 8 --cpu_bind=cores ./hsnap inh0001t4 outh0001t4-1
+srun -n  8 -c 8 --cpu_bind=cores ./hsnap inh0001t4 outh0001t4-2
+srun -n  8 -c 8 --cpu_bind=cores ./hsnap inh0001t4 outh0001t4-3
+srun -n  8 -c 8 --cpu_bind=cores ./hsnap inh0001t4 outh0001t4-4
+srun -n  8 -c 8 --cpu_bind=cores ./hsnap inh0001t4 outh0001t4-5

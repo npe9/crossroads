@@ -1,0 +1,6 @@
+[submodule "miniPIC-crossroads/src"]
+	path = miniPIC-crossroads/src
+	url = https://github.com/npe9/miniPIC-crossroads.git/
+[submodule "vpic_crossroads/vpic_project"]
+	path = vpic_crossroads/vpic_project
+	url = https://github.com/npe9/vpic_project
